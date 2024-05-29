@@ -11,9 +11,9 @@ export const App = observer(() => {
       locale={gstate.locale?.antLocale}
       theme={{
         token: {
-          colorPrimary: "#1da565",
-          colorLink: "#1da565",
-          colorSuccess: "#1da565",
+          colorPrimary: "#1B86C8",
+          colorLink: "#1B86C8",
+          colorSuccess: "#1B86C8",
         },
       }}
     >

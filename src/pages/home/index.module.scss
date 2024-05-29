@@ -1,4 +1,4 @@
-$headerHeight: 60px;
+$headerHeight: 70px;
 $sideWidth: 380px;
 $border: 1px solid #dfdfdf;
 
@@ -9,7 +9,7 @@ $border: 1px solid #dfdfdf;
 }
 
 .header {
-  background-color: #fff;
+  background-color: #1B86C8;
   height: $headerHeight;
   padding: 0 16px;
   border-bottom: $border;
@@ -30,7 +30,7 @@ $border: 1px solid #dfdfdf;
     color: currentColor;
   }
   &:hover {
-    color: #1da565;
+    color: #1B86C8;
   }
 }
 

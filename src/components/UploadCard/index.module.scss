@@ -2,12 +2,14 @@
   width: 40%;
   margin-left: 30%;
   position: relative;
+  height: fit-content;
+  padding: 80px 40px;
   cursor: pointer;
   user-select: none;
-  background-color: #ab1414;
-  padding: 30px;
+  background-color: #D8EBF7;
   overflow: hidden;
   box-sizing: border-box;
+  margin-top: 20vh;
   &:active {
     background-color: darken($color: #f5f5f5, $amount: 5);
   }
@@ -37,7 +39,7 @@
     width: 60px;
     height: 60px;
     path {
-      fill: #1da565;
+      fill: #1B86C8;
     }
   }
   > span:nth-child(2) {
@@ -49,7 +51,7 @@
   }
   > div:nth-child(3) {
     margin-top: 8px;
-    color: #aaa;
+    color: #93acd3;
     text-align: center;
     padding: 0 16px;
     line-height: 1.6;

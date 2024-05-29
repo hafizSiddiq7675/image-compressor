@@ -1,7 +1,5 @@
 import {
   Button,
-  Divider,
-  Dropdown,
   Flex,
   GlobalToken,
   Popover,
@@ -21,11 +19,10 @@ import {
   CaretRightOutlined,
   CheckCircleFilled,
   ClearOutlined,
-  DeleteOutlined,
-  DownloadOutlined,
+  DeleteFilled,
+  CloudDownloadOutlined,
   ExclamationCircleOutlined,
   FolderAddOutlined,
-  GithubOutlined,
   PlusOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
@@ -33,7 +30,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ImageInput } from "@/components/ImageInput";
 import { gstate } from "@/global";
 import { CompressOption } from "@/components/CompressOption";
-import { changeLang, langList } from "@/locale";
 import { DefaultCompressOption, ImageItem, homeState } from "@/states/home";
 import { Indicator } from "@/components/Indicator";
 import {
@@ -42,7 +38,6 @@ import {
   getFilesFromHandle,
   getOutputFileName,
   getUniqNameOnNames,
-  wait,
 } from "@/functions";
 import { ProgressHint } from "@/components/ProgressHint";
 import { UploadCard } from "@/components/UploadCard";
@@ -54,10 +49,7 @@ import { Compare } from "@/components/Compare";
  * 获取当前语言字符串
  * @returns
  */
-function getLangStr() {
-  const findLang = langList?.find((item) => item?.key == gstate.lang);
-  return (findLang as any)?.label;
-}
+
 
 function getColumns(token: GlobalToken, disabled: boolean) {
   const columns: TableProps<ImageItem>["columns"] = [
@@ -251,7 +243,7 @@ function getColumns(token: GlobalToken, disabled: boolean) {
               }}
             >
               <Tooltip title={gstate.locale?.listAction.removeOne}>
-                <DeleteOutlined />
+                <DeleteFilled style={{color:"red"}} />
               </Tooltip>
             </Typography.Link>
             <Typography.Link
@@ -265,7 +257,7 @@ function getColumns(token: GlobalToken, disabled: boolean) {
               }}
             >
               <Tooltip title={gstate.locale?.listAction.downloadOne}>
-                <DownloadOutlined />
+                <CloudDownloadOutlined style={{color:"green", fontSize: "17px", marginTop:"3px"}} />
               </Tooltip>
             </Typography.Link>
           </Space>
@@ -368,7 +360,7 @@ const Home = observer(() => {
                 {gstate.locale?.listAction.clear}
               </Button>
               <Button
-                icon={<DownloadOutlined />}
+                icon={<CloudDownloadOutlined />}
                 type="primary"
                 disabled={disabled}
                 onClick={async () => {
@@ -470,33 +462,7 @@ const Home = observer(() => {
         <div>
           <Logo title={gstate.locale?.logo} />
         </div>
-        <Space>
-          <Dropdown
-            menu={{
-              items: langList,
-              selectedKeys: [gstate.lang],
-              async onClick({ key }) {
-                await wait(300);
-                changeLang(key);
-              },
-            }}
-          >
-            <Flex className={style.locale} align="center">
-              <svg viewBox="0 0 24 24" style={{ color: "currentcolor" }}>
-                <path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" />
-              </svg>
-              <Typography.Text>{getLangStr()}</Typography.Text>
-            </Flex>
-          </Dropdown>
-          <Divider type="vertical" style={{ background: "#dfdfdf" }} />
-          <Typography.Link
-            className={style.github}
-            target="_blank"
-            href="https://github.com/joye61/pic-smaller"
-          >
-            <GithubOutlined />
-          </Typography.Link>
-        </Space>
+       
       </Flex>
 
       {/* body */}
