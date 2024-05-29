@@ -50,7 +50,6 @@ import { Compare } from "@/components/Compare";
  * @returns
  */
 
-
 function getColumns(token: GlobalToken, disabled: boolean) {
   const columns: TableProps<ImageItem>["columns"] = [
     {
